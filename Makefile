@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/03 11:38:11 by anifanto          #+#    #+#              #
-#    Updated: 2022/02/21 16:37:55 by wismith          ###   ########.fr        #
+#    Created: 2022/02/21 16:52:51 by wismith           #+#    #+#              #
+#    Updated: 2022/02/21 17:47:07 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,17 +60,17 @@ $(OBJB_DIR)/%.o : src/%.c
 	$(CC) $(FLAGS) -c $< -o $@
 
 all : $(NAME) $(BONUS) libftprintf.a gnl_m.a gnl_b.a
-	@tput setaf 3; echo "libft->"
-	@tput setaf 5; echo "\n--- Nothing Left To Do ---\n"
+	@tput setaf 5; echo "\n--- 'libft' Nothing Left To Do ---\n"
 
 $(NAME) : $(OBJ) $(HEADER) $(SRC)
-	@tput setaf 3; echo "\nBuilding->"
+	@tput setaf 3; echo "libft->"
+	@tput setaf 3; echo "Building->"
 	@mkdir -p Library
 	@ar -rc $(NAME) $(OBJ) 
 	@tput setaf 2; echo "libft.a->       [ok] [ok]"
 
 $(BONUS) : $(OBJ_BONUS) $(HEADER)
-	@tput setaf 3; echo "\nBuilding->"
+	@tput setaf 3; echo "Building->"
 	@mkdir -p Library
 	@ar -rc $(BONUS) $(OBJ_BONUS)
 	@tput setaf 2; echo "libftbonus.a->  [ok] [ok]"

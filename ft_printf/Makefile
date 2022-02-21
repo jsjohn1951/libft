@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 13:37:27 by wismith           #+#    #+#              #
-#    Updated: 2022/02/20 23:10:20 by wismith          ###   ########.fr        #
+#    Updated: 2022/02/21 17:48:41 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,11 @@ $(OBJDIR)/%.o : assets/%.c
 	$(CC) $(FLAGS) $(OPTION) -c $< -o $@
 
 all : $(NAME)
-	@tput setaf 3; echo "\nft_printf->"
-	@tput setaf 5; echo "\n--- Nothing Left To Do ---\n"
+	@tput setaf 5; echo "\n--- 'ft_printf' Nothing Left To Do ---\n"
 	
 $(NAME) : $(OBJ) $(HEADER)
-	@tput setaf 3; echo "\nBuilding->"
+	@tput setaf 3; echo "\nft_printf-->"
+	@tput setaf 3; echo "Building--->"
 	@mkdir -p ../Library
 	@ar -rc $(NAME) $(OBJ)
 	@tput setaf 2; echo "libftprintf.a-> [ok] [ok]"

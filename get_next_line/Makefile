@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 15:57:08 by wismith           #+#    #+#              #
-#    Updated: 2022/02/21 16:34:11 by wismith          ###   ########.fr        #
+#    Updated: 2022/02/21 17:48:29 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,11 @@ $(OBJDIR)/%.o : %.c
 	$(CC) $(FLAGS) $(OPTION) -c $< -o $@
 
 all : $(NAME)
-	@tput setaf 3; echo "\nget_next_line->"
-	@tput setaf 5; echo "\n--- Nothing Left To Do ---\n"
+	@tput setaf 5; echo "\n--- 'gnl' Nothing Left To Do ---\n"
 
 $(NAME) : $(OBJ) $(HEADER)
-	@tput setaf 3; echo "\nBuilding->"
+	@tput setaf 3; echo "\nget_next_line-->"
+	@tput setaf 3; echo "Building--->"
 	@mkdir -p ../Library
 	@ar -rc $(NAME) $(OBJ)
 	@tput setaf 2; echo "gnl_m.a-> [ok] [ok]"
