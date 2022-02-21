@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/03 11:38:11 by anifanto          #+#    #+#              #
-#    Updated: 2022/02/20 23:15:55 by wismith          ###   ########.fr        #
+#    Updated: 2022/02/21 16:37:55 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,8 @@ STAND_B = $(LIST_BONUS:.c=.o)
 OBJ = $(addprefix $(OBJ_DIR)/, $(STAND_M))
 OBJ_BONUS = $(addprefix $(OBJB_DIR)/, $(STAND_B))
 FT_PRINTF = ft_printf
+GNL = get_next_line
+GNLB = get_next_line_bonus
 
 $(OBJ_DIR)/%.o : src/%.c
 	mkdir -p $(OBJ_DIR)
@@ -57,7 +59,7 @@ $(OBJB_DIR)/%.o : src/%.c
 	mkdir -p $(OBJB_DIR)
 	$(CC) $(FLAGS) -c $< -o $@
 
-all : $(NAME) $(BONUS) libftprintf.a
+all : $(NAME) $(BONUS) libftprintf.a gnl_m.a gnl_b.a
 	@tput setaf 3; echo "libft->"
 	@tput setaf 5; echo "\n--- Nothing Left To Do ---\n"
 
@@ -77,10 +79,20 @@ libftprintf.a:
 	@mkdir -p Library
 	@make -C $(FT_PRINTF)
 
+gnl_m.a:
+	@mkdir -p Library
+	@make -C $(GNL)
+
+gnl_b.a:
+	@mkdir -p Library
+	@make -C $(GNLB)
+
 clean:
 	@tput setaf 3; echo "\nCleaning->"
 	@rm -r -f $(OBJ) $(OBJ_BONUS) $(OBJ_DIR) $(OBJB_DIR)
 	@make clean -C $(FT_PRINTF)
+	@make clean -C $(GNL)
+	@make clean -C $(GNLB)
 	@tput setaf 1; echo "Objects->" | tr -d '\n'
 	@tput setaf 2; echo "       [ok] [ok]"
 
