@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 00:25:16 by wismith           #+#    #+#             */
-/*   Updated: 2023/12/04 00:31:02 by wismith          ###   ########.fr       */
+/*   Updated: 2023/12/08 23:57:15 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_null_node(t_node *root, int flag)
 	t_node	*min;
 	t_node	*max;
 
+	if (!root)
+		return ;
 	min = ft_tree_min(root);
 	max = ft_tree_max(root);
 	free (min->node_left);
