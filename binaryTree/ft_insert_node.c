@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 01:14:54 by wismith           #+#    #+#             */
-/*   Updated: 2023/12/04 02:13:36 by wismith          ###   ########.fr       */
+/*   Updated: 2023/12/15 02:01:52 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 void		ft_update_heights(t_node *node);
 t_node		*ft_init_node(const void *key, const void *value);
 t_node		*ft_balance(t_node *node);
+t_node		*ft_find_node(t_node *root, const void *key_val);
 
 /*
 * @brief attached pointers to the parents nodes
 */
-void	ft_attach_parents(t_node *root)
+void	ft_attach_parents(t_node *node, t_node *prev)
 {
-	if (!root)
-		return ;
-	ft_attach_parents (root->node_left);
-	if (root->node_left)
-		root->node_left->node_parent = root;
-	if (root->node_right)
-		root->node_right->node_parent = root;
-	ft_attach_parents (root->node_right);
+	if (node && node->data)
+	{
+		ft_attach_parents(node->node_left, node);
+		node->node_parent = prev;
+		ft_attach_parents(node->node_right, node);
+	}
 }
 
 t_node	*ft_replace(t_node *old, t_node *new)
@@ -72,9 +71,11 @@ t_node	*ft_insert_new_node(t_node *root, const void *key, const void *value)
 
 	if (!root)
 		return (NULL);
+	if (ft_find_node(root, key))
+		return (root);
 	node = ft_init_node(key, value);
 	res = ft_insert_node(root, node);
-	ft_attach_parents(root);
+	ft_attach_parents(res, NULL);
 	ft_update_heights (root);
 	return (res);
 }
